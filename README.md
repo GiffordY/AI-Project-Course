@@ -1,4 +1,4 @@
-# **AI projects and course**
+# **AI projects and courses**
 
 ###**Section-01: digit image process**  
 (1) Convert color image into gray image, convert color/gray image into binary image;  
