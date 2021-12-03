@@ -6,5 +6,5 @@
 (3) Implement bilinear interpolation algorithm;  
 (4) Implement histogram equalization algorithm.
 
-###**Section-02: dimensionality reduction** 
+###**Section-02: dimensionality reduction**   
 (1) PCA  
