@@ -69,7 +69,7 @@ if __name__ == '__main__':
     # cv.imshow('img_gray_equ_my', img_gray_equ_my)
     # cv.imshow('img_gray_equ_cv', img_gray_equ_cv)
 
-    # Show result: Histogram equalization for color image
+    # Show results: Histogram equalization for color image
     plt.figure()
     plt.subplot(1, 2, 1)
     plt.title('src image')
@@ -81,7 +81,7 @@ if __name__ == '__main__':
     plt.imshow(img_equ_my_rgb)
     plt.show()
 
-    # Show result: Histogram equalization for grayscale image
+    # Show results: Histogram equalization for grayscale image
     plt.figure()
     plt.subplot(1, 3, 1)
     plt.title('src gray image')
@@ -94,7 +94,7 @@ if __name__ == '__main__':
     plt.imshow(img_gray_equ_cv, cmap='gray')
     plt.show()
 
-    # Show result: Histogram
+    # Show results: Histogram
     plt.figure()
     plt.subplot(2, 2, 1)
     plt.title('img_gray_equ_my')
