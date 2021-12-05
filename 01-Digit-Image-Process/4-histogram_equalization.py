@@ -6,6 +6,7 @@ histogram equalization algorithm
 import cv2 as cv
 import numpy as np
 from collections import Counter
+import matplotlib.pyplot as plt
 
 
 def equalize_hist_gray(src_image):
@@ -55,16 +56,59 @@ def equalize_hist_color(src_image, mode='YUV'):
     return dst_image
 
 
-img = cv.imread('lenna.png')
-img_equ_my = equalize_hist_color(img, mode='YUV')
-cv.imshow('img', img)
-cv.imshow('img_equ_my', img_equ_my)
+if __name__ == '__main__':
+    img = cv.imread('lenna.png')
+    img_equ_my = equalize_hist_color(img, mode='YUV')
+    # cv.imshow('img', img)
+    # cv.imshow('img_equ_my', img_equ_my)
 
-img_gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-img_gray_equ_my = equalize_hist_gray(img_gray)
-img_gray_equ_cv = cv.equalizeHist(img_gray)
-cv.imshow('img_gray', img_gray)
-cv.imshow('img_gray_equ_my', img_gray_equ_my)
-cv.imshow('img_gray_equ_cv', img_gray_equ_cv)
+    img_gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+    img_gray_equ_my = equalize_hist_gray(img_gray)
+    img_gray_equ_cv = cv.equalizeHist(img_gray)
+    # cv.imshow('img_gray', img_gray)
+    # cv.imshow('img_gray_equ_my', img_gray_equ_my)
+    # cv.imshow('img_gray_equ_cv', img_gray_equ_cv)
 
-cv.waitKey(0)
+    # Show result: Histogram equalization for color image
+    plt.figure()
+    plt.subplot(1, 2, 1)
+    plt.title('src image')
+    img_rgb = cv.cvtColor(img, cv.COLOR_BGR2RGB)
+    plt.imshow(img_rgb)
+    plt.subplot(1, 2, 2)
+    plt.title('dst image')
+    img_equ_my_rgb = cv.cvtColor(img_equ_my, cv.COLOR_BGR2RGB)
+    plt.imshow(img_equ_my_rgb)
+    plt.show()
+
+    # Show result: Histogram equalization for grayscale image
+    plt.figure()
+    plt.subplot(1, 3, 1)
+    plt.title('src gray image')
+    plt.imshow(img_gray, cmap='gray')
+    plt.subplot(1, 3, 2)
+    plt.title('dst image my')
+    plt.imshow(img_gray_equ_my, cmap='gray')
+    plt.subplot(1, 3, 3)
+    plt.title('dst image cv')
+    plt.imshow(img_gray_equ_cv, cmap='gray')
+    plt.show()
+
+    # Show result: Histogram
+    plt.figure()
+    plt.subplot(2, 2, 1)
+    plt.title('img_gray_equ_my')
+    plt.imshow(img_gray_equ_my, cmap='gray')
+    plt.subplot(2, 2, 2)
+    plt.title('histogram_my')
+    plt.hist(img_gray_equ_my.ravel(), 256, (0, 255), True)
+    plt.subplot(2, 2, 3)
+    plt.title('img_gray_equ_cv')
+    plt.imshow(img_gray_equ_cv, cmap='gray')
+    plt.subplot(2, 2, 4)
+    plt.title('histogram_cv')
+    plt.hist(img_gray_equ_cv.ravel(), 256, (0, 255), True)
+    plt.show()
+
+    cv.waitKey(0)
+
